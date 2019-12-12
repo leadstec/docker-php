@@ -1,0 +1,31 @@
+version: "3.7"
+
+# Set -arch=_aarch64 for arm build
+services:
+  php7:
+    build:
+      context: .
+      args:
+        #- arch=_aarch64
+        - version=7.3.11
+        - build=dev
+    image: leadstec/php7:7.3.11
+    ports:
+      - "50301:80"
+    volumes:
+      - ~/volumes-data/php7.local/log:/data/log
+      - ~/volumes-data/php7.local/persist:/data/persist
+      - ~/volumes-data/cache/php7:/data/cache
+    env_file:
+      - ./env
+    environment:
+      - EMAIL=
+      - LCS_LOG_LEVEL=debug
+    secrets:
+      - lcs
+    hostname: php7.local
+    container_name: php7.local
+
+secrets:
+  lcs:
+    file: ~/.vcubi/lcs

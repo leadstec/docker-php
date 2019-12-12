@@ -1,0 +1,63 @@
+#!/bin/bash
+
+set -e
+
+COMPOSER_VERSION=1.9.1
+PHPUNIT_VERSION=8
+ADMINER_VERSION=4.7.5
+
+clog -i "PHP7: Build process starts ..."
+
+# add image schema
+lcs-cli schema add --section php7
+
+# setup nginx
+cp -f /scripts/setup/nginx/default.conf /etc/nginx/conf.d/default.conf
+# php.ini template should be copied in runonce_php in order
+# to avoid child image building process using php-cli
+# config php with our template
+cp -f /scripts/setup/php7/php.ini /etc/php7/php.ini.template
+
+# create session directory (deprecated)
+#mkdir -p /usr/lib/php7/session
+#chown -R nginx:nginx /usr/lib/php7/session
+
+cp -f /scripts/setup/php7/php-fpm.conf /etc/php7/php-fpm.conf
+# fpm pool configs
+cp -f /scripts/setup/php7/php-fpm.d/www.conf /etc/php7/php-fpm.d/www.conf
+clog -i "php7: Configuration templates for nginx, php, php-fpm copied."
+
+# install composer
+curl https://getcomposer.org/download/${COMPOSER_VERSION}/composer.phar -o /usr/local/bin/composer
+chmod +x /usr/local/bin/composer
+composer config -g
+composer config -g repositories.packagist composer https://packagist.phpcomposer.com
+clog -i "php7: Composer installed and configured to use China's repos."
+# install phpunit
+curl https://phar.phpunit.de/phpunit-${PHPUNIT_VERSION}.phar -o /usr/local/bin/phpunit
+chmod +x /usr/local/bin/phpunit
+# install adminer
+curl https://github.com/vrana/adminer/releases/download/v${ADMINER_VERSION}/adminer-${ADMINER_VERSION}.php -o ${APP_DIR}/adminer.php
+
+clog -i "php7: Composer, PhpUnit and Adminer installed."
+
+# php-fpm supervisor config
+cat > /etc/supervisor.conf.d/php7-fpm.conf <<EOF
+[program:php7-fpm]
+directory=/
+command=/usr/sbin/php-fpm7
+user=root
+autostart=true
+autorestart=true
+stdout_logfile=${LOG_DIR}/supervisor/%(program_name)s.log
+stderr_logfile=${LOG_DIR}/supervisor/%(program_name)s.log
+EOF
+clog -i "php7: Supervisor configuration for php-fpm created."
+
+# Create profile for global env in different shells
+cat > /etc/profile.d/php7.sh <<EOF
+export FPM_LOG_DIR=${FPM_LOG_DIR}
+EOF
+clog -i "php7: Global ENVs added to /etc/profile.d"
+
+clog -i "php7: Build process completed."

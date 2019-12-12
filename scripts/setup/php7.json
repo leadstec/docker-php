@@ -1,0 +1,256 @@
+{
+  "registry": "leadstec",
+  "image": "php7",
+  "version": "",
+  "build": "",
+  "schema": "20180315",
+  "lcs_schema": "1.6.0",
+  "permissions": [
+    {
+      "chmod": "775",
+      "chown": "nginx:lcs",
+      "path": "${FPM_LOG_DIR}"
+    }
+  ],
+  "envs": [
+    {
+      "name": "FPM_WEB_MODE",
+      "default": "true",
+      "replacements": [
+        {
+          "pattern": ";FPM_WEB_MODE_FALSE_ERASE",
+          "path": "/etc/php7/php-fpm.d/www.conf",
+          "type": "4"
+        },
+        {
+          "pattern": ";FPM_WEB_MODE_TRUE_ERASE",
+          "path": "/etc/php7/php-fpm.d/www.conf",
+          "type": "3"
+        }
+      ]
+    },
+    {
+      "name": "FPM_PM_MAX_CHILDREN",
+      "default": "5",
+      "replacements": [
+        {
+          "pattern": "{{FPM_PM_MAX_CHILDREN}}",
+          "path": "/etc/php7/php-fpm.d/www.conf",
+          "type": "1"
+        }
+      ]
+    },
+    {
+      "name": "FPM_PM_START_SERVERS",
+      "default": "2",
+      "replacements": [
+        {
+          "pattern": "{{FPM_PM_START_SERVERS}}",
+          "path": "/etc/php7/php-fpm.d/www.conf",
+          "type": "1"
+        }
+      ]
+    },
+    {
+      "name": "FPM_PM_MIN_SPARE_SERVERS",
+      "default": "1",
+      "replacements": [
+        {
+          "pattern": "{{FPM_PM_MIN_SPARE_SERVERS}}",
+          "path": "/etc/php7/php-fpm.d/www.conf",
+          "type": "1"
+        }
+      ]
+    },
+    {
+      "name": "FPM_PM_MAX_SPARE_SERVERS",
+      "default": "3",
+      "replacements": [
+        {
+          "pattern": "{{FPM_PM_MAX_SPARE_SERVERS}}",
+          "path": "/etc/php7/php-fpm.d/www.conf",
+          "type": "1"
+        }
+      ]
+    },
+    {
+      "name": "PHP_MEMORY_LIMIT",
+      "default": "128M",
+      "replacements": [
+        {
+          "pattern": "{{PHP_MEMORY_LIMIT}}",
+          "path": "/etc/php7/php.ini",
+          "type": "1"
+        }
+      ]
+    },
+    {
+      "name": "PHP_MAX_EXECUTION_TIME",
+      "default": "30",
+      "replacements": [
+        {
+          "pattern": "{{PHP_MAX_EXECUTION_TIME}}",
+          "path": "/etc/php7/php.ini",
+          "type": "1"
+        }
+      ]
+    },
+    {
+      "name": "PHP_MAX_INPUT_TIME",
+      "default": "60",
+      "replacements": [
+        {
+          "pattern": "{{PHP_MAX_INPUT_TIME}}",
+          "path": "/etc/php7/php.ini",
+          "type": "1"
+        }
+      ]
+    },
+    {
+      "name": "PHP_SOCKET_TIMEOUT",
+      "default": "60",
+      "replacements": [
+        {
+          "pattern": "{{PHP_SOCKET_TIMEOUT}}",
+          "path": "/etc/php7/php.ini",
+          "type": "1"
+        }
+      ]
+    },
+    {
+      "name": "PHP_OUTPUT_BUFFERING",
+      "default": "4096",
+      "replacements": [
+        {
+          "pattern": "{{PHP_OUTPUT_BUFFERING}}",
+          "path": "/etc/php7/php.ini",
+          "type": "1"
+        }
+      ]
+    },
+    {
+      "name": "PHP_MAX_INPUT_VARS",
+      "default": "1000",
+      "replacements": [
+        {
+          "pattern": "{{PHP_MAX_INPUT_VARS}}",
+          "path": "/etc/php7/php.ini",
+          "type": "1"
+        }
+      ]
+    },
+    {
+      "name": "PHP_SHORT_OPEN_TAG",
+      "default": "On",
+      "replacements": [
+        {
+          "pattern": "{{PHP_SHORT_OPEN_TAG}}",
+          "path": "/etc/php7/php.ini",
+          "type": "1"
+        }
+      ]
+    },
+    {
+      "name": "PHP_EXPOSE_PHP",
+      "default": "On",
+      "replacements": [
+        {
+          "pattern": "{{PHP_EXPOSE_PHP}}",
+          "path": "/etc/php7/php.ini",
+          "type": "1"
+        }
+      ]
+    },
+    {
+      "name": "PHP_TIMEZONE",
+      "default": "Asia/Shanghai",
+      "replacements": [
+        {
+          "pattern": "{{PHP_TIMEZONE}}",
+          "path": "/etc/php7/php.ini",
+          "type": "1"
+        }
+      ]
+    },
+    {
+      "name": "PHP_ERROR_REPORTING",
+      "default": "E_ALL & ~E_DEPRECATED & ~E_STRICT",
+      "replacements": [
+        {
+          "pattern": "{{PHP_ERROR_REPORTING}}",
+          "path": "/etc/php7/php.ini",
+          "type": "1"
+        }
+      ]
+    },
+    {
+      "name": "PHP_DISPLAY_ERRORS",
+      "default": "Off",
+      "replacements": [
+        {
+          "pattern": "{{PHP_DISPLAY_ERRORS}}",
+          "path": "/etc/php7/php.ini",
+          "type": "1"
+        }
+      ]
+    },
+    {
+      "name": "PHP_DISPLAY_STARTUP_ERRORS",
+      "default": "Off",
+      "replacements": [
+        {
+          "pattern": "{{PHP_DISPLAY_STARTUP_ERRORS}}",
+          "path": "/etc/php7/php.ini",
+          "type": "1"
+        }
+      ]
+    },
+    {
+      "name": "PHP_LOG_ERRORS",
+      "default": "Off",
+      "replacements": [
+        {
+          "pattern": "{{PHP_LOG_ERRORS}}",
+          "path": "/etc/php7/php.ini",
+          "type": "1"
+        }
+      ]
+    },
+    {
+      "name": "PHP_SESSION_GC_DIVISOR",
+      "default": "1000",
+      "replacements": [
+        {
+          "pattern": "{{PHP_SESSION_GC_DIVISOR}}",
+          "path": "/etc/php7/php.ini",
+          "type": "1"
+        }
+      ]
+    },
+    {
+      "name": "PHP_SESSION_GC_MAXLIFETIME",
+      "default": "1440",
+      "replacements": [
+        {
+          "pattern": "{{PHP_SESSION_GC_MAXLIFETIME}}",
+          "path": "/etc/php7/php.ini",
+          "type": "1"
+        }
+      ]
+    },
+    {
+      "name": "PHP_ENABLE_ADMINER",
+      "default": "false",
+      "replacements": []
+    }
+  ],
+  "secrets": [],
+  "storages": [
+    {
+      "type": "1",
+      "chown": "",
+      "path": "/etc/php7",
+      "base": ""
+    }
+  ]
+}
