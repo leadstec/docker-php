@@ -3,9 +3,7 @@
 # DOCKER-VERSION    19.03
 # Copyright         (C) 2020 LEADSTEC Solutions. All rights reserved.
 #
-ARG arch=
-FROM leadstec/nginx${arch}:1.16.1
-
+FROM leadstec/nginx:1.16.1
 ARG version=7.3.13
 ARG build=dev
 

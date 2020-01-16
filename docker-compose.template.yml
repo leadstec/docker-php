@@ -1,11 +1,11 @@
 version: "3.7"
-# Set -arch=_aarch64 for arm build
+
 services:
+
   php:
     build:
       context: .
       args:
-        #- arch=_aarch64
         - version=7.3.13
         - build=dev
     image: leadstec/php:7.3.13
