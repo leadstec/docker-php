@@ -1,21 +1,20 @@
 version: "3.7"
-
 # Set -arch=_aarch64 for arm build
 services:
-  php7:
+  php:
     build:
       context: .
       args:
         #- arch=_aarch64
-        - version=7.3.11
+        - version=7.3.13
         - build=dev
-    image: leadstec/php7:7.3.11
+    image: leadstec/php:7.3.13
     ports:
       - "50301:80"
     volumes:
-      - ~/volumes-data/php7.local/log:/data/log
-      - ~/volumes-data/php7.local/persist:/data/persist
-      - ~/volumes-data/cache/php7:/data/cache
+      - ~/volumes/php.local/log:/data/log
+      - ~/volumes/php.local/persist:/data/persist
+      - ~/volumes/cache/php:/data/cache
     env_file:
       - ./env
     environment:
@@ -23,8 +22,8 @@ services:
       - LCS_LOG_LEVEL=debug
     secrets:
       - lcs
-    hostname: php7.local
-    container_name: php7.local
+    hostname: php.local
+    container_name: php.local
 
 secrets:
   lcs:

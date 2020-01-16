@@ -1,9 +1,9 @@
 {
   "registry": "leadstec",
-  "image": "php7",
+  "image": "php",
   "version": "",
   "build": "",
-  "schema": "20180315",
+  "schema": "20200113",
   "lcs_schema": "1.6.0",
   "permissions": [
     {

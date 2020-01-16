@@ -6,11 +6,11 @@
 ARG arch=
 FROM leadstec/nginx${arch}:1.16.1
 
-ARG version=7.3.11
+ARG version=7.3.13
 ARG build=dev
 
 LABEL version="${version}-${build}" \
-    description="Php7 image for VCubi" \
+    description="PHP image for VCubi" \
     maintainer="Cantgis Geng <yngeng@leadstec.com>"
 
 # set environment variables
