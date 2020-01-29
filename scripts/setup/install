@@ -28,17 +28,16 @@ cp -f /scripts/setup/php7/php-fpm.d/www.conf /etc/php7/php-fpm.d/www.conf
 clog -i "PHP: Configuration templates for nginx, php, php-fpm copied."
 
 # install composer
-curl https://getcomposer.org/download/${COMPOSER_VERSION}/composer.phar -o /usr/local/bin/composer
+curl -LfsS https://getcomposer.org/download/${COMPOSER_VERSION}/composer.phar -o /usr/local/bin/composer
 chmod +x /usr/local/bin/composer
 composer config -g
 composer config -g repositories.packagist composer https://packagist.phpcomposer.com
 clog -i "PHP: Composer installed and configured to use China's repos."
 # install phpunit
-curl https://phar.phpunit.de/phpunit-${PHPUNIT_VERSION}.phar -o /usr/local/bin/phpunit
+curl -LfsS https://phar.phpunit.de/phpunit-${PHPUNIT_VERSION}.phar -o /usr/local/bin/phpunit
 chmod +x /usr/local/bin/phpunit
 # install adminer
-curl https://github.com/vrana/adminer/releases/download/v${ADMINER_VERSION}/adminer-${ADMINER_VERSION}.php -o ${APP_DIR}/adminer.php
-
+curl -LfsS https://github.com/vrana/adminer/releases/download/v${ADMINER_VERSION}/adminer-${ADMINER_VERSION}.php -o ${APP_DIR}/adminer.php
 clog -i "PHP: Composer, PhpUnit and Adminer installed."
 
 # php-fpm supervisor config
