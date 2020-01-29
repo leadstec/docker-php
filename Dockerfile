@@ -11,11 +11,9 @@ LABEL version="${version}-${build}" \
     description="PHP image for VCubi" \
     maintainer="Cantgis Geng <yngeng@leadstec.com>"
 
-# set environment variables
 ENV PHP7_VERSION="${version}"  \
     FPM_LOG_DIR="${LOG_DIR}/php7"
 
-# install packages
 RUN apk --update add git mariadb-client php7 php7-cli php7-fpm php7-curl php7-pdo php7-pdo_mysql \
     php7-ctype php7-mysqli php7-iconv php7-ldap php7-gd php7-xmlrpc php7-mcrypt php7-dom php7-phar php7-xml \
     php7-openssl php7-json php7-zlib php7-session php7-imap php7-exif php7-intl php7-opcache php7-soap \
