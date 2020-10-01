@@ -1,0 +1,70 @@
+schemaVersion: '2.0.0'
+
+commandTests:
+  - name: 'Php'
+    command: 'which'
+    args: ['php']
+    expectedOutput: ['/usr/bin/php']
+  - name: 'Composer'
+    command: 'which'
+    args: ['composer']
+    expectedOutput: ['/usr/local/bin/composer']
+
+fileExistenceTests:
+  - name: 'Php main config'
+    path: '/etc/php7/php.ini'
+    shouldExist: true
+    permissions: '-rw-r--r--'
+    uid: 0
+    gid: 0
+  - name: 'php-fpm main config'
+    path: '/etc/php7/php-fpm.conf'
+    shouldExist: true
+    permissions: '-rw-r--r--'
+    uid: 0
+    gid: 0
+  - name: 'php-fpm default config'
+    path: '/etc/php7/php-fpm.d/www.conf'
+    shouldExist: true
+    permissions: '-rw-r--r--'
+    uid: 0
+    gid: 0
+  - name: 'Schema file'
+    path: '/etc/lcs/php.json'
+    shouldExist: true
+    permissions: '-rw-r--r--'
+    uid: 0
+    gid: 0
+
+fileContentTests:
+  - name: 'Schema'
+    path: '/etc/lcs/schema.json'
+    expectedContents:
+      - 'FPM_WEB_MODE'
+      - 'FPM_PM_MAX_CHILDREN'
+      - 'FPM_PM_START_SERVERS'
+      - 'FPM_PM_MIN_SPARE_SERVERS'
+      - 'FPM_PM_MAX_SPARE_SERVERS'
+      - 'PHP_MEMORY_LIMIT'
+      - 'PHP_MAX_EXECUTION_TIME'
+      - 'PHP_MAX_INPUT_TIME'
+      - 'PHP_SOCKET_TIMEOUT'
+      - 'PHP_OUTPUT_BUFFERING'
+      - 'PHP_MAX_INPUT_VARS'
+      - 'PHP_SHORT_OPEN_TAG'
+      - 'PHP_EXPOSE_PHP'
+      - 'PHP_TIMEZONE'
+      - 'PHP_ERROR_REPORTING'
+      - 'PHP_DISPLAY_ERRORS'
+      - 'PHP_DISPLAY_STARTUP_ERRORS'
+      - 'PHP_LOG_ERRORS'
+      - 'PHP_SESSION_GC_DIVISOR'
+      - 'PHP_SESSION_GC_MAXLIFETIME'
+      - 'PHP_ENABLE_ADMINER'
+
+metadataTest:
+  env:
+    - key: 'FPM_LOG_DIR'
+      value: '/data/log/php7'
+  entrypoint: ["lcsd"]
+  cmd: ["run", "start"]

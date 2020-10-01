@@ -2,9 +2,8 @@
 
 set -e
 
-COMPOSER_VERSION=1.9.1
-PHPUNIT_VERSION=8
-ADMINER_VERSION=4.7.5
+COMPOSER_VERSION=1.10.13
+ADMINER_VERSION=4.7.7
 
 clog -i "PHP: Build process starts ..."
 
@@ -31,11 +30,8 @@ clog -i "PHP: Configuration templates for nginx, php, php-fpm copied."
 curl -LfsS https://getcomposer.org/download/${COMPOSER_VERSION}/composer.phar -o /usr/local/bin/composer
 chmod +x /usr/local/bin/composer
 composer config -g
-composer config -g repositories.packagist composer https://packagist.phpcomposer.com
+composer config -g repo.packagist composer https://packagist.phpcomposer.com
 clog -i "PHP: Composer installed and configured to use China's repos."
-# install phpunit
-curl -LfsS https://phar.phpunit.de/phpunit-${PHPUNIT_VERSION}.phar -o /usr/local/bin/phpunit
-chmod +x /usr/local/bin/phpunit
 # install adminer
 curl -LfsS https://github.com/vrana/adminer/releases/download/v${ADMINER_VERSION}/adminer-${ADMINER_VERSION}.php -o ${APP_DIR}/adminer.php
 clog -i "PHP: Composer, PhpUnit and Adminer installed."

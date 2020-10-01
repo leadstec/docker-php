@@ -1,14 +1,16 @@
 #
-# AUTHOR            Frank,H.L.Lai <frank@leadstec.com>
-# DOCKER-VERSION    19.03
-# Copyright         (C) 2020 LEADSTEC Solutions. All rights reserved.
+# Author            Frank,H.L.Lai <frank@leadstec.com>
+# Docker Version    19.03
+# Website           https://www.leadstec.com
+# Copyright         (C) 2020 LEADSTEC Systems. All rights reserved.
 #
-FROM leadstec/nginx:1.16.1
-ARG version=7.3.13
+ARG arch=
+FROM leadstec.tencentcloudcr.com/leadstec/nginx${arch}:1.18.0
+ARG version=7.3.22
 ARG build=dev
 
 LABEL version="${version}-${build}" \
-    description="PHP image for VCubi" \
+    description="PHP image for VCubi platform" \
     maintainer="Cantgis Geng <yngeng@leadstec.com>"
 
 ENV PHP7_VERSION="${version}"  \

@@ -1,4 +1,63 @@
-### CHANGELOG
+# PHP image for VCubi Platform
+
+![PHP](https://img.shields.io/badge/php-7.3.22,_latest-blue)
+![x86_64](https://img.shields.io/badge/x86_64-supported-brightgreen)
+![aarch64](https://img.shields.io/badge/aarch64-supported-brightgreen)
+
+The project contains Php image for VCubi platform, based on LCS container management daemon.
+
+## How to Use
+
+### Pull image
+    # from Docker Hub
+    docker pull leadstec/php:[tag]
+    docker pull leadstec/php-aarch64:[tag]
+    # from Tencent CR
+    docker pull leadstec.tencentcloudcr.com/leadstec/php:[tag]
+    docker pull leadstec.tencentcloudcr.com/leadstec/php-aarch64:[tag]
+
+### Build image
+    docker-compose build php
+
+### LCS Schema & ENV
+
+
+
+| ENV Variable              | Description               | Default | Accept Values | Required |
+|---------------------------|---------------------------|---------|---------------|----------|
+| FPM_WEB_MODE              | Run FPM in web mode       |  true   |  true,false   |          |
+| FPM_PM_MAX_CHILDREN       |                           |    5    |               |          |
+| FPM_PM_START_SERVERS      |                           |    2    |               |          |
+| FPM_PM_MIN_SPARE_SERVERS  |                           |    1    |               |          |
+| FPM_PM_MAX_SPARE_SERVERS  |                           |    3    |               |          |
+| PHP_MEMORY_LIMIT          |                           |   128M  |               |          |
+| PHP_MAX_EXECUTION_TIME    |                           |   30    |     |          |
+| PHP_MAX_INPUT_TIME        |                           |   60    |     |          |
+| PHP_SOCKET_TIMEOUT        |                           |   60    |     |          |
+| PHP_OUTPUT_BUFFERING      |                           |   4096  |     |          |
+| PHP_MAX_INPUT_VARS        |                           |   1000  |     |          |
+| PHP_SHORT_OPEN_TAG        |                           |   On    | On,Off    |          |
+| PHP_EXPOSE_PHP            |                           |   On    | On,Off    |          |
+| PHP_TIMEZONE              |                           | Asia/Shanghai |     |          |
+| PHP_ERROR_REPORTING       |                           | E_ALL & ~E_DEPRECATED & ~E_STRICT | | |
+| PHP_DISPLAY_ERRORS        |                           |   Off   |  On,Off    |          |
+| PHP_DISPLAY_STARTUP_ERRORS|                           |   Off   | On,Off    |          |
+| PHP_LOG_ERRORS            |                           |   Off   | On,Off    |          |
+| PHP_SESSION_GC_DIVISOR    |                           |  1000   |     |          |
+| PHP_SESSION_GC_MAXLIFETIME|                           |  1440   |     |          |
+| PHP_ENABLE_ADMINER        |                           |  false  | true,false    |          |
+
+
+## Image Structure Test
+    container-structure-test test --image leadstec/php:tag --config tests/php.yaml
+
+## CHANGELOG
+
+**2020/10/01**
+* Update: Php 7.3.22
+* Update: Composer 1.10.13
+* Update: Adminer 4.7.7
+* Remove: Phpunit
 
 **7.3.11 2019-12-11**
 * Update: NginX 1.16.1

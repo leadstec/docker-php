@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 
 services:
 
@@ -6,9 +6,10 @@ services:
     build:
       context: .
       args:
-        - version=7.3.13
+        - arch=
+        - version=7.3.22
         - build=dev
-    image: leadstec/php:7.3.13
+    image: leadstec.tencentcloudcr.com/leadstec/php:7.3.22
     ports:
       - "50301:80"
     volumes:
