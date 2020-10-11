@@ -23,29 +23,29 @@ The project contains Php image for VCubi platform, based on LCS container manage
 
 
 
-| ENV Variable              | Description               | Default | Accept Values | Required |
-|---------------------------|---------------------------|---------|---------------|----------|
-| FPM_WEB_MODE              | Run FPM in web mode       |  true   |  true,false   |          |
-| FPM_PM_MAX_CHILDREN       |                           |    5    |               |          |
-| FPM_PM_START_SERVERS      |                           |    2    |               |          |
-| FPM_PM_MIN_SPARE_SERVERS  |                           |    1    |               |          |
-| FPM_PM_MAX_SPARE_SERVERS  |                           |    3    |               |          |
-| PHP_MEMORY_LIMIT          |                           |   128M  |               |          |
-| PHP_MAX_EXECUTION_TIME    |                           |   30    |     |          |
-| PHP_MAX_INPUT_TIME        |                           |   60    |     |          |
-| PHP_SOCKET_TIMEOUT        |                           |   60    |     |          |
-| PHP_OUTPUT_BUFFERING      |                           |   4096  |     |          |
-| PHP_MAX_INPUT_VARS        |                           |   1000  |     |          |
-| PHP_SHORT_OPEN_TAG        |                           |   On    | On,Off    |          |
-| PHP_EXPOSE_PHP            |                           |   On    | On,Off    |          |
-| PHP_TIMEZONE              |                           | Asia/Shanghai |     |          |
-| PHP_ERROR_REPORTING       |                           | E_ALL & ~E_DEPRECATED & ~E_STRICT | | |
-| PHP_DISPLAY_ERRORS        |                           |   Off   |  On,Off    |          |
-| PHP_DISPLAY_STARTUP_ERRORS|                           |   Off   | On,Off    |          |
-| PHP_LOG_ERRORS            |                           |   Off   | On,Off    |          |
-| PHP_SESSION_GC_DIVISOR    |                           |  1000   |     |          |
-| PHP_SESSION_GC_MAXLIFETIME|                           |  1440   |     |          |
-| PHP_ENABLE_ADMINER        |                           |  false  | true,false    |          |
+| ENV Variable              | Description               | Default | Type |
+|---------------------------|---------------------------|---------|------|
+| FPM_WEB_MODE              | Run FPM in web mode       |  true   | Env |
+| FPM_PM_MAX_CHILDREN       |                           |    5    | Env |
+| FPM_PM_START_SERVERS      |                           |    2    | Env |
+| FPM_PM_MIN_SPARE_SERVERS  |                           |    1    | Env |
+| FPM_PM_MAX_SPARE_SERVERS  |                           |    3    | Env |
+| PHP_MEMORY_LIMIT          |                           |   128M  | Env |
+| PHP_MAX_EXECUTION_TIME    |                           |   30    | Env |
+| PHP_MAX_INPUT_TIME        |                           |   60    | Env |
+| PHP_SOCKET_TIMEOUT        |                           |   60    | Env |
+| PHP_OUTPUT_BUFFERING      |                           |   4096  | Env |
+| PHP_MAX_INPUT_VARS        |                           |   1000  | Env |
+| PHP_SHORT_OPEN_TAG        |                           |   On    | Env |
+| PHP_EXPOSE_PHP            |                           |   On    | Env |
+| PHP_TIMEZONE              |                           | Asia/Shanghai | Env |
+| PHP_ERROR_REPORTING       |                           | E_ALL & ~E_DEPRECATED & ~E_STRICT | Env |
+| PHP_DISPLAY_ERRORS        |                           |   Off   | Env |
+| PHP_DISPLAY_STARTUP_ERRORS|                           |   Off   | Env |
+| PHP_LOG_ERRORS            |                           |   Off   | Env |
+| PHP_SESSION_GC_DIVISOR    |                           |  1000   | Env |
+| PHP_SESSION_GC_MAXLIFETIME|                           |  1440   | Env |
+| PHP_ENABLE_ADMINER        |                           |  false  | Env |
 
 
 ## Image Structure Test
