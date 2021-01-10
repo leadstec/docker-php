@@ -1,28 +1,24 @@
 # PHP image for VCubi Platform
 
-![PHP](https://img.shields.io/badge/php-7.3.22,_latest-blue)
-![x86_64](https://img.shields.io/badge/x86_64-supported-brightgreen)
-![aarch64](https://img.shields.io/badge/aarch64-supported-brightgreen)
+![PHP](https://img.shields.io/badge/PHP-7.3.26-blue)
+![x86_64](https://img.shields.io/badge/Arch-amd64,_arm64-brightgreen)
+![Workflow](https://github.com/leadstec/docker-php/workflows/ci/badge.svg)
 
 The project contains Php image for VCubi platform, based on LCS container management daemon.
 
+Image on [DockerHub](https://hub.docker.com/r/leadstec/php) 
+
 ## How to Use
-
-### Pull image
-    # from Docker Hub
+    # Pull image
     docker pull leadstec/php:[tag]
-    docker pull leadstec/php-aarch64:[tag]
-    # from Tencent CR
-    docker pull leadstec.tencentcloudcr.com/leadstec/php:[tag]
-    docker pull leadstec.tencentcloudcr.com/leadstec/php-aarch64:[tag]
 
-### Build image
+    # Build image
     docker-compose build php
 
-### LCS Schema & ENV
+    # Image Structure Test
+    container-structure-test test --image leadstec/php:tag --config tests/php.yaml
 
-
-
+## LCS Schema & ENV
 | ENV Variable              | Description               | Default | Type |
 |---------------------------|---------------------------|---------|------|
 | FPM_WEB_MODE              | Run FPM in web mode       |  true   | Env |
@@ -48,10 +44,12 @@ The project contains Php image for VCubi platform, based on LCS container manage
 | PHP_ENABLE_ADMINER        |                           |  false  | Env |
 
 
-## Image Structure Test
-    container-structure-test test --image leadstec/php:tag --config tests/php.yaml
-
 ## CHANGELOG
+
+**2021/01/10**
+* Update: php 7.3.26
+* Update: Github actions for build and release
+* Update: Docker Hub as default registry
 
 **2020/10/01**
 * Update: Php 7.3.22

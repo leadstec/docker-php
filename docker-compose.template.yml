@@ -5,11 +5,7 @@ services:
   php:
     build:
       context: .
-      args:
-        - arch=
-        - version=7.3.22
-        - build=dev
-    image: leadstec.tencentcloudcr.com/leadstec/php:7.3.22
+    image: leadstec/php:7.3.26
     ports:
       - "50301:80"
     volumes:
