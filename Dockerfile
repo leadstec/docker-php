@@ -4,7 +4,7 @@
 # Website           https://www.leadstec.com
 # Copyright         (C) 2021 LEADSTEC Systems. All rights reserved.
 #
-FROM leadstec/nginx:1.18.0
+FROM leadstec/nginx:latest
 
 LABEL description="PHP image for VCubi platform" \
     maintainer="Cantgis Geng <yngeng@leadstec.com>"

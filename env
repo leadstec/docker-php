@@ -1,6 +1,4 @@
 # alpine & lcs ENVs
-EMAIL=user@example.com
-ENGINE=example.com
 LCS_LOG_LEVEL=production
 LCS_LOG_OUTPUT=stderr
 LCS_LOG_TIMESTAMP=0

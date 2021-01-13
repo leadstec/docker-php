@@ -1,4 +1,4 @@
-# PHP image for VCubi Platform
+# PHP image for VCubi platform
 
 ![Version](https://img.shields.io/badge/PHP-7.3.26-blue)
 ![Arch](https://img.shields.io/badge/Arch-amd64,_arm64-brightgreen)
@@ -18,7 +18,7 @@ LEADSTEC: [Official website](https://www.leadstec.com)
     docker-compose build php
 
     # Image Structure Test
-    container-structure-test test --image leadstec/php:tag --config tests/php.yaml
+    container-structure-test test --image leadstec/php:tag --config tests/php.yml
 
 ## LCS Schema & ENV
 | ENV Variable              | Description               | Default | Type |

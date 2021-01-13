@@ -5,7 +5,7 @@ services:
   php:
     build:
       context: .
-    image: leadstec/php:7.3.26
+    image: leadstec/php:latest
     ports:
       - "50301:80"
     volumes:
@@ -15,12 +15,12 @@ services:
     env_file:
       - ./env
     environment:
-      - EMAIL=
       - LCS_LOG_LEVEL=debug
     secrets:
       - lcs
     hostname: php.local
     container_name: php.local
+    entrypoint: ["lcsd", "run", "start", "---", "/scripts/debug.sh"]
 
 secrets:
   lcs:
