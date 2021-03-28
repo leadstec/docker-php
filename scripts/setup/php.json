@@ -3,7 +3,7 @@
   "image": "php",
   "version": "",
   "build": "",
-  "schema": "20200113",
+  "schema": "20210328",
   "lcs_schema": "1.6.0",
   "permissions": [
     {
@@ -14,18 +14,39 @@
   ],
   "envs": [
     {
-      "name": "FPM_WEB_MODE",
-      "default": "true",
+      "name": "FPM_DISABLE_NGINX",
+      "default": "false",
+      "replacements": []
+    },
+    {
+      "name": "FPM_LISTEN_ADDRESS",
+      "default": "127.0.0.1",
       "replacements": [
         {
-          "pattern": ";FPM_WEB_MODE_FALSE_ERASE",
+          "pattern": "{{FPM_LISTEN_ADDRESS}}",
           "path": "/etc/php7/php-fpm.d/www.conf",
-          "type": "4"
+          "type": "1"
         },
         {
-          "pattern": ";FPM_WEB_MODE_TRUE_ERASE",
+          "pattern": "{{FPM_LISTEN_ADDRESS}}",
+          "path": "/etc/nginx/http.d/default.conf",
+          "type": "1"
+        }
+      ]
+    },
+    {
+      "name": "FPM_LISTEN_PORT",
+      "default": "9000",
+      "replacements": [
+        {
+          "pattern": "{{FPM_LISTEN_PORT}}",
           "path": "/etc/php7/php-fpm.d/www.conf",
-          "type": "3"
+          "type": "1"
+        },
+        {
+          "pattern": "{{FPM_LISTEN_PORT}}",
+          "path": "/etc/nginx/http.d/default.conf",
+          "type": "1"
         }
       ]
     },
@@ -237,11 +258,6 @@
           "type": "1"
         }
       ]
-    },
-    {
-      "name": "PHP_ENABLE_ADMINER",
-      "default": "false",
-      "replacements": []
     }
   ],
   "secrets": [],

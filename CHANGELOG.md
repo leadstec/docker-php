@@ -1,5 +1,12 @@
 # CHANGELOG
 
+**2021/03/28**
+* Update: Php 7.4.15
+* Update: Composer 2.0.11
+* Remove: Adminer
+* Remove: FPM_WEB_MODE
+* Added: FPM_LISTEN_ADDRESS, FPM_LISTEN_PORT, FPM_DISABLE_NGINX
+
 **2021/01/10**
 * Update: php 7.3.26
 * Update: Github actions for build and release

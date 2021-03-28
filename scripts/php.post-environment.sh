@@ -12,21 +12,10 @@ if [[ ${SETUP_MODE} == 'new' ]]; then
     # sed the php max size based on NginX config
     sed -i "s/{{PHP_MAX_SIZE}}/${PHP_MAX_SIZE}/g" /etc/php7/php.ini
 
-    if [[ ${PHP_ENABLE_ADMINER} == 'false' ]]; then
-        # disable adminer
-        rm -f ${APP_DIR}/adminer.php
-        clog -i "php7: Disabled Adminer mode."
-    fi
-
-    if [[ ${FPM_WEB_MODE} == 'false' ]]; then
+    if [[ ${FPM_DISABLE_NGINX} == 'true' ]]; then
         # disable nginx if fpm is not running as web mode
         sed -i "s/autostart=true/autostart=false/" /etc/supervisor.conf.d/nginx.conf
-        clog -i "php7: Disable nginx"
-        if [ ! -f ${APP_DIR}/adminer.php ]; then
-        rm -f ${APP_DIR}/adminer.php
-        clog -i "php7: Disabled Adminer mode."
-        fi
-        clog -i "php7: Disabled NginX and Adminer as FPM is running in cluster mode."
+        clog -i "php7: Disabled NginX as FPM is running in cluster mode."
     fi
 else
     # custom code when restore

@@ -1,6 +1,6 @@
 # PHP image for VCubi platform
 
-![Version](https://img.shields.io/badge/PHP-7.3.26-blue)
+![Version](https://img.shields.io/badge/PHP-7.4.15-blue)
 ![Arch](https://img.shields.io/badge/Arch-amd64,_arm64-brightgreen)
 ![Workflow](https://github.com/leadstec/docker-php/workflows/ci/badge.svg)
 
@@ -23,7 +23,9 @@ LEADSTEC: [Official website](https://www.leadstec.com)
 ## LCS Schema & ENV
 | ENV Variable              | Description               | Default | Type |
 |---------------------------|---------------------------|---------|------|
-| FPM_WEB_MODE              | Run FPM in web mode       |  true   | Env |
+| FPM_LISTEN_ADDRESS        |                           |127.0.0.1| Env |
+| FPM_LISTEN_PORT           |                           | 9000    | Env |
+| FPM_DISABLE_NGINX         |                           |  false  | Env |
 | FPM_PM_MAX_CHILDREN       |                           |    5    | Env |
 | FPM_PM_START_SERVERS      |                           |    2    | Env |
 | FPM_PM_MIN_SPARE_SERVERS  |                           |    1    | Env |
@@ -43,5 +45,3 @@ LEADSTEC: [Official website](https://www.leadstec.com)
 | PHP_LOG_ERRORS            |                           |   Off   | Env |
 | PHP_SESSION_GC_DIVISOR    |                           |  1000   | Env |
 | PHP_SESSION_GC_MAXLIFETIME|                           |  1440   | Env |
-| PHP_ENABLE_ADMINER        |                           |  false  | Env |
-

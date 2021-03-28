@@ -36,5 +36,5 @@ jobs:
           push: true
           tags: |
             leadstec/php:latest
-            leadstec/php:7.3
-            leadstec/php:7.3.26
+            leadstec/php:7.4
+            leadstec/php:7.4.15
