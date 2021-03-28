@@ -40,7 +40,9 @@ fileContentTests:
   - name: 'Schema'
     path: '/etc/lcs/schema.json'
     expectedContents:
-      - 'FPM_WEB_MODE'
+      - 'FPM_LISTEN_ADDRESS'
+      - 'FPM_LISTEN_PORT'
+      - 'FPM_DISABLE_NGINX'
       - 'FPM_PM_MAX_CHILDREN'
       - 'FPM_PM_START_SERVERS'
       - 'FPM_PM_MIN_SPARE_SERVERS'
@@ -60,7 +62,6 @@ fileContentTests:
       - 'PHP_LOG_ERRORS'
       - 'PHP_SESSION_GC_DIVISOR'
       - 'PHP_SESSION_GC_MAXLIFETIME'
-      - 'PHP_ENABLE_ADMINER'
 
 metadataTest:
   env:
